@@ -452,6 +452,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StartStopTimer",
+                    "type": "Button",
+                    "id": "9986f55e-d50d-4de1-89c2-f3d16b45986b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -694,6 +703,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Go back scene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e133b84-95ca-4ff9-966e-6dd026825027",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartStopTimer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.InputSystem;
 public class Breathing_exercise : MonoBehaviour
 {
-    public InputField timerText; // UI Text to display the timer
-    public InputField phaseText; // UI Text to display the current phase
-    public InputField remainingTimeText; // UI Text to display remaining time for the entire exercise
-    public Button button; // Optional button for other interactions
-
-    private float timer; // Timer for the current phase
-    private int phase; // 0 = Inhale, 1 = Hold, 2 = Exhale
-    private float totalTime; // Total elapsed time
-    public int breathing_time = 20; // Total breathing exercise duration in minutes
-    private float maxTime; // Maximum time for the exercise (20 minutes)
-    private bool isTimerRunning = true; // Control for pausing the timer
-
+    public TMP_Text timerText; 
+    public TMP_Text phaseText;
+    public TMP_Text remainingTimeText;
+    public Button button;
+    Regulate_timer time;
+    private float timer;
+    private int phase; 
+    private float totalTime; 
+    public int breathing_time = 20;
+    private float maxTime;
+    private bool isTimerRunning = true;
+    public InputActionProperty stopstarttimer;
     private void Start()
     {
+        time = FindObjectOfType<Regulate_timer>();
+        breathing_time = time.Breathe_timer;
         totalTime = 0;
         maxTime = breathing_time * 60;
         StartBreathingCycle();
@@ -41,13 +45,12 @@ public class Breathing_exercise : MonoBehaviour
             UpdateRemainingTimeDisplay();
         }
 
-        // Handle Controller Inputs
         HandleControllerInputs();
     }
 
     private void StartBreathingCycle()
     {
-        phase = 0; // Start with Inhaling
+        phase = 0; 
         SetPhase(5, "Inhale");
     }
 
@@ -88,7 +91,7 @@ public class Breathing_exercise : MonoBehaviour
             float remainingTime = Mathf.Max(0, maxTime - totalTime);
             int minutes = Mathf.FloorToInt(remainingTime / 60);
             int seconds = Mathf.FloorToInt(remainingTime % 60);
-            remainingTimeText.text = $"Remaining: {minutes:00}:{seconds:00}";
+            remainingTimeText.text = $" {minutes:00}:{seconds:00}";
         }
     }
 
@@ -101,25 +104,10 @@ public class Breathing_exercise : MonoBehaviour
 
     private void HandleControllerInputs()
     {
-        // Check Left Controller Primary Button (A) to stop/start timer
-        if (Input.GetButtonDown("XRI_Left_PrimaryButton"))
+        // Check Left Controller Secondary Button (B) to stop/start timer
+        if (stopstarttimer.action.IsPressed())
         {
-            isTimerRunning = !isTimerRunning; // Toggle the timer state
-        }
-
-        // Check Left Controller Secondary Button (B) to go to the previous scene
-        if (Input.GetButtonDown("XRI_Left_SecondaryButton"))
-        {
-            GoToPreviousScene();
-        }
-    }
-
-    private void GoToPreviousScene()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex > 0)
-        {
-            SceneManager.LoadScene(currentSceneIndex - 1); // Load the previous scene
+            isTimerRunning = !isTimerRunning;
         }
     }
 
