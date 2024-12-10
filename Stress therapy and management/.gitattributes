@@ -1,0 +1,64 @@
+* text=auto
+
+# EOL
+
+*.asset binary
+*.gitattributes binary
+*.anim binary
+*.data binary
+*.mat binary
+*.xml binary
+*.asmdef binary
+*.json binary
+*.shadergraph binary
+*.prefab binary
+*.mesh binary
+*.unity binary
+*.controller binary
+*.scenetemplate binary
+*.py binary
+*.pl binary
+*.pm binary
+*.t binary
+*.it binary
+*.h binary
+*.cpp binary
+*.cs binary
+*.c binary
+*.txt binary
+*.bindings binary
+*.sh binary
+*.jam binary
+*.as binary
+*.boo binary
+*.java binary
+*.js binary
+Makefile binary
+*.shader binary
+*.cginc binary
+*.glslinc binary
+*.meta binary
+*.mm binary
+*.md binary
+Runtime/Export/common_* binary
+Repositories.ini binary
+.hgignore binary
+
+# vs can handle these as lf, but really wants them as crlf
+*.vcproj binary
+*.vcxproj binary
+*.vcxproj.filters binary
+*.csproj binary
+*.props binary
+*.targets binary
+*.sln binary
+*.sln.template binary
+*.bat binary
+*.cmd binary
+*.xaml binary
+
+# the templating parser will actually fail on lf, inexplicably setting every #line directive as '1'
+*.tt binary
+*.t4 binary
+*.ttinclude binary
+

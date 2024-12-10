@@ -443,6 +443,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Go back scene",
+                    "type": "Button",
+                    "id": "73b95507-3461-4f3a-925a-e371e70e0e9a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -674,6 +683,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e523ef4c-1bb5-4655-a967-169e2bdb1598",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Go back scene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -2471,7 +2491,7 @@
                     "name": "",
                     "id": "fea81b99-07f5-426a-beba-5e0832c14855",
                     "path": "<TouchscreenGestureInputController>/tapStartPosition",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "Tap Start Position",
