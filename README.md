@@ -1,4 +1,4 @@
-App - https://drive.google.com/drive/folders/1DjYBfoQLHZCFD5owkYaYO0pymGenIeH1?usp=sharing -- GamePlay Youtube Video - https://youtu.be/4hms-8WXqos
+App - https://drive.google.com/drive/folders/1DjYBfoQLHZCFD5owkYaYO0pymGenIeH1?usp=sharing                        -- GamePlay Youtube Video - https://youtu.be/4hms-8WXqos -- Documentation - Available in project repository
 
 VR Therapy Module for Stress Management
 --Description: 
