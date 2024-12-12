@@ -168,6 +168,6 @@ public class Guided_meditation : MonoBehaviour
         // Save the meditation time and last update date
         PlayerPrefs.SetInt(MeditationTimeKey, totalTimeMeditatedToday);
         PlayerPrefs.SetString(LastUpdateKey, DateTime.Now.ToString());
-        PlayerPrefs.SetInt("PersistantMeditationTimeSet", timer.total_meditation_time);
+        //PlayerPrefs.SetInt("PersistantMeditationTimeSet", timer.total_meditation_time);
     }
 }

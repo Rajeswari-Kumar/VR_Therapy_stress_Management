@@ -461,6 +461,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "QuitApplication",
+                    "type": "Button",
+                    "id": "aebc608b-62d8-4f7f-9013-28dcac2a4cb9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -714,6 +723,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "StartStopTimer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81948d70-660d-4e31-bb62-fb614e72f91b",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuitApplication",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1279,6 +1299,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Change Environment",
+                    "type": "Button",
+                    "id": "17be06ab-971f-4866-aa1a-8eb7d28b2e6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Change skybox",
+                    "type": "Button",
+                    "id": "13d2d83f-d55f-40ee-ad13-4de7c1775f0d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1510,6 +1548,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba98f15-b97a-4975-998a-967d71666007",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change Environment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cf02d33-f0e6-462d-96bf-8ec255617916",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change skybox",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
