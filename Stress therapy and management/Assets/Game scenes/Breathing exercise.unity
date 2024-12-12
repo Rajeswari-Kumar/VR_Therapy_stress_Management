@@ -123,6 +123,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &398311508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398311510}
+  - component: {fileID: 398311509}
+  m_Layer: 0
+  m_Name: Scene manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &398311509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398311508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1038546d6862244854254b43f6f6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Go_back_scene:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Go_back_scene
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ecd27192-c150-4818-b207-fbe2bd8b0a49
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3436806970061802889, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!4 &398311510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398311508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.24198094, y: 8.405954, z: -0.22657157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487309651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,16 +2156,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035891936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 42.21}
-  m_LocalScale: {x: 0.16299038, y: 0.16299038, z: 0.16299038}
+  m_LocalPosition: {x: 0, y: 0, z: 5.700001}
+  m_LocalScale: {x: 0.09548628, y: 0.09548628, z: 0.09548628}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1435877383}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1349703005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0130072, y: 9}
+  m_AnchoredPosition: {x: -3.1, y: -0.037599564}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1349703004
@@ -2144,7 +2200,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1035891941}
   m_Father: {fileID: 1396098631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1349703006
@@ -2513,7 +2570,6 @@ MonoBehaviour:
   phaseText: {fileID: 656814585}
   remainingTimeText: {fileID: 2071690760}
   button: {fileID: 0}
-  breathing_time: 2
   stopstarttimer:
     m_UseReference: 1
     m_Action:
@@ -2526,6 +2582,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -322922972393504365, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  timer_breathe: {fileID: 0}
 --- !u!4 &1425562775
 Transform:
   m_ObjectHideFlags: 0
@@ -2795,7 +2852,7 @@ Transform:
   m_GameObject: {fileID: 1613923912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.826765, y: 7.92, z: 36.51}
+  m_LocalPosition: {x: -1.826765, y: 7.92, z: 36.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3005,7 +3062,7 @@ SceneRoots:
   - {fileID: 890449380}
   - {fileID: 1613923915}
   - {fileID: 771025088}
-  - {fileID: 1035891941}
   - {fileID: 1394883939}
   - {fileID: 1425562775}
   - {fileID: 1930236597}
+  - {fileID: 398311510}

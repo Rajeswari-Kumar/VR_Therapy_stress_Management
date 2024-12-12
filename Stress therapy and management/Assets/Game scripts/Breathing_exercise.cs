@@ -3,32 +3,54 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem;
+using System;
+
 public class Breathing_exercise : MonoBehaviour
 {
-    public TMP_Text timerText; 
+    public TMP_Text timerText;
     public TMP_Text phaseText;
     public TMP_Text remainingTimeText;
     public Button button;
-    Regulate_timer time;
+    //Regulate_timer time;
+
     private float timer;
-    private int phase; 
-    private float totalTime; 
-    public int breathing_time = 20;
+    private int phase;
+    private float totalTime;
+    private int breathing_time = 0;
     private float maxTime;
     private bool isTimerRunning = true;
+    private float breathingExerciseTimer = 0f; // Tracks elapsed breathing time in seconds
+    private int totalBreathingTimeToday = 0; // Tracks total breathing time in minutes
+    private DateTime lastUpdate;
+
     public InputActionProperty stopstarttimer;
+    private const string BreathingTimeKey = "TotalBreathingTime";
+    private const string LastUpdateKey = "LastUpdateDate";
+    public Carry_forward_time timer_breathe;
     private void Start()
     {
-        time = FindObjectOfType<Regulate_timer>();
-        breathing_time = time.Breathe_timer;
+        timer_breathe = FindObjectOfType<Carry_forward_time>();
+        breathing_time = timer_breathe.breathing_timer_set;
         totalTime = 0;
         maxTime = breathing_time * 60;
+
+        string lastUpdateString = PlayerPrefs.GetString(LastUpdateKey, DateTime.MinValue.ToString());
+        lastUpdate = DateTime.Parse(lastUpdateString);
+
+        if (DateTime.Now.Date > lastUpdate.Date)
+        {
+            totalBreathingTimeToday = 0;
+        }
+        else
+        {
+            totalBreathingTimeToday = PlayerPrefs.GetInt(BreathingTimeKey, 0);
+        }
+
         StartBreathingCycle();
     }
 
     private void Update()
     {
-        // Handle Timer Logic
         if (isTimerRunning && totalTime < maxTime)
         {
             if (timer > 0)
@@ -42,15 +64,31 @@ public class Breathing_exercise : MonoBehaviour
             }
 
             totalTime += Time.deltaTime;
+            breathingExerciseTimer += Time.deltaTime;
+
+            if (breathingExerciseTimer >= 60f)
+            {
+                breathingExerciseTimer -= 60f;
+                totalBreathingTimeToday += 1;
+                PlayerPrefs.SetInt(BreathingTimeKey, totalBreathingTimeToday);
+                timer_breathe.total_breathing_time = totalBreathingTimeToday;
+                //time_update.Breathing_time = totalBreathingTimeToday;
+            }
+
             UpdateRemainingTimeDisplay();
         }
 
         HandleControllerInputs();
+
+        if (totalTime >= maxTime && isTimerRunning)
+        {
+            EndBreathingExercise();
+        }
     }
 
     private void StartBreathingCycle()
     {
-        phase = 0; 
+        phase = 0;
         SetPhase(5, "Inhale");
     }
 
@@ -58,15 +96,15 @@ public class Breathing_exercise : MonoBehaviour
     {
         switch (phase)
         {
-            case 0: // Inhale -> Hold
+            case 0:
                 SetPhase(7, "Hold");
                 phase = 1;
                 break;
-            case 1: // Hold -> Exhale
+            case 1:
                 SetPhase(8, "Exhale");
                 phase = 2;
                 break;
-            case 2: // Exhale -> Restart Cycle
+            case 2:
                 StartBreathingCycle();
                 break;
         }
@@ -81,7 +119,7 @@ public class Breathing_exercise : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        timerText.text = Mathf.Ceil(timer).ToString(); // Round up to show whole seconds
+        timerText.text = Mathf.Ceil(timer).ToString();
     }
 
     private void UpdateRemainingTimeDisplay()
@@ -104,7 +142,6 @@ public class Breathing_exercise : MonoBehaviour
 
     private void HandleControllerInputs()
     {
-        // Check Left Controller Secondary Button (B) to stop/start timer
         if (stopstarttimer.action.IsPressed())
         {
             isTimerRunning = !isTimerRunning;
@@ -117,5 +154,11 @@ public class Breathing_exercise : MonoBehaviour
         {
             button.onClick.Invoke();
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt(BreathingTimeKey, totalBreathingTimeToday);
+        PlayerPrefs.SetString(LastUpdateKey, DateTime.Now.ToString());
     }
 }
