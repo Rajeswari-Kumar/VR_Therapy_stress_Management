@@ -1,5 +1,4 @@
-App - Built app available in build folder of this project repository
-GamePlay Youtube Video - https://youtu.be/4hms-8WXqos
+App - Built app available in build folder of this project repository -- GamePlay Youtube Video - https://youtu.be/4hms-8WXqos
 
 VR Therapy Module for Stress Management
 --Description: 
